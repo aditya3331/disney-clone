@@ -1,11 +1,25 @@
 import React from 'react'
 import styled from 'styled-components'
+import { selectMovies } from "../features/movie/movieSlice"
+import { useSelector } from "react-redux"
 
 function Movies() {
+
+    const movies = useSelector(selectMovies);
+    console.log(movies);
     return (
         <Container>
             <h4>Recommended For You</h4>
+
             <Content>
+                {
+                    movies &&
+                    movies.map((movie) => {
+                        <Wrap>
+                            <img src={movie.cardImage} />
+                        </Wrap>
+                    })
+                }
                 <Wrap>
                     <img
                         src="https://assets.foxdcg.com/dpp-uploaded/images/the-simpsons/keyart_s33.jpg"
